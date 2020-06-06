@@ -12,8 +12,6 @@ with open(sample_json_path) as f:
 
 game_tracker = CivGameTracker.from_dict(game_data)
 
-print(game_tracker)
-
 
 @app.route("/civ6", methods=["POST"])
 async def civ_webhook():
