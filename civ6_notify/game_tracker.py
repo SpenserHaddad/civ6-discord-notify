@@ -48,6 +48,6 @@ class CivGameTracker:
     @staticmethod
     def from_dict(game_data: Dict) -> "CivGameTracker":
         tracker = CivGameTracker()
-        for g in game_data["games"]:
+        for g in game_data:
             tracker.add_game_dict(g)
         return tracker
