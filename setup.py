@@ -24,6 +24,7 @@ setuptools.setup(
         "Topic :: Games/Entertainment :: Turn Based Strategy",
     ],
     python_requires=">=3.8",
-    install_requires=["quart", "discord.py"],
+    install_requires=["quart", "discord.py", "click"],
     extras_require={"dev": ["black", "flake8", "mypy"]},
+    entry_points={"console_scripts": ["civ6-notify = civ6_notify.cli:run_server"]},
 )
