@@ -1,10 +1,12 @@
 from dataclasses import dataclass, field, asdict
 from typing import Dict, Optional
+from .discord_bot import CivDiscordNotifyBotClient
 
 
 @dataclass
 class CivPlayer:
     name: str
+    discord_id: Optional[int] = None
     mention_in_channel: bool = False
     direct_message: bool = False
 
@@ -15,11 +17,14 @@ class CivPlayByCloudGame:
     players: Dict[str, CivPlayer] = field(default_factory=dict)
     turn_count: int = 0
     current_player: Optional[str] = None
+    discord_guild_id: Optional[int] = None
+    discord_channel_id: Optional[int] = None
 
 
 class CivGameTracker:
     def __init__(self):
         self._games: Dict[str, CivPlayByCloudGame] = {}
+        self.discord_client: Optional[CivDiscordNotifyBotClient] = None
 
     def update_game(self, game_name: str, player_name: str, turn: int):
         game = self._games[game_name]
